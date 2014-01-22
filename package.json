@@ -1,0 +1,29 @@
+{
+  "name": "kata-calc",
+  "version": "0.0.1",
+  "description": "http://osherove.com/tdd-kata-1/",
+  "main": "kata.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xlenz/kata-calc.git"
+  },
+  "keywords": [
+    "kata",
+    "calc",
+    "mocha",
+    "chai"
+  ],
+  "author": "mgrybyk",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/xlenz/kata-calc/issues"
+  }
+}
