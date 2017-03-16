@@ -1,10 +1,9 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Build') {
       steps {
         echo 'Hello, bitwiseman!'
-        
       }
     }
     stage('Deploy') {
@@ -29,6 +28,7 @@ pipeline {
       steps {
         echo 'run rest'
         echo 'copy results'
+        sh 'exit 2'
       }
     }
     stage('UI Tests') {
