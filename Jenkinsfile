@@ -12,7 +12,7 @@ pipeline {
           "Relay": {
             echo 'Download artifacts'
             sleep 15
-            
+           
           },
           "Server": {
             echo 'Server'
