@@ -12,7 +12,7 @@ pipeline {
           "Relay": {
             echo 'Download artifacts'
             sleep 15
-           
+            
           },
           "Server": {
             echo 'Server'
@@ -29,7 +29,6 @@ pipeline {
       steps {
         echo 'run rest'
         echo 'copy results'
-        sh 'exit 2'
       }
     }
     stage('UI Tests') {
