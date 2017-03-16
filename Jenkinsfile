@@ -1,43 +1,23 @@
-node('master') {
-    stage('Build') {
-        sh "echo Build"
+pipeline {
+    agent any
+    parameters {
+        choice(
+            // choices are a string of newline separated values
+            // https://issues.jenkins-ci.org/browse/JENKINS-41180
+            choices: 'greeting\nsilence',
+            description: '',
+            name: 'REQUESTED_ACTION')
     }
-    stage('Test'){
-      parallel (
-        "JUnit": { 
-            sh "echo JUnit"
-        },
-        "DBUnit": { 
-            sh "echo DBUnit"
-        },
-        "Jasmine": { 
-            sh "echo Jasmine"
-        },
-      )
-    }
-    stage('Browser Tests'){
-      parallel (
-        "Firefox": { 
-            sh "echo Firefox"
-        },
-        "Edge": { 
-            sh "echo Edge"
-        },
-        "Safari": { 
-            sh "echo Safari"
-        },
-        "Chrome": { 
-            sh "echo Chrome"
-        },
-      )
-    }
-    stage('Dev'){
-        sh "echo Dev"
-    }
-    stage('Staging'){
-        sh "echo Staging"
-    }
-    stage('Production'){
-        sh "echo Production"
+
+    stages {
+        stage ('Speak') {
+            when {
+                // Only say hello if a "greeting" is requested
+                expression { params.REQUESTED_ACTION == 'greeting' }
+            }
+            steps {
+                echo "Hello, bitwiseman!"
+            }
+        }
     }
 }
