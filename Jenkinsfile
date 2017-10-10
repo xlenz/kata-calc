@@ -39,12 +39,25 @@ pipeline {
         stage('Example') {
             steps {
                 echo 'OLOLO'
+                sh "echo 'my artifact data' > build_artifact.txt"
             }
         }
     }
     post { 
         always { 
-            echo 'I will always say Hello again!'
+            echo 'BLDNMBBR: ${BUILD_NUIMBER}'
+          
+            step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
+                  siteName: 'ua-mg',
+
+                  component: 'PDT_EAR',
+                  versionName: '${BUILD_NUIMBER}',
+
+                  deploy: true,
+                  deployApp: 'PDT_Gestion_Profils',
+                  deployEnv: 'TEST',
+                  deployProc: 'Deploy_application'
+            ])
         }
     }
 }
