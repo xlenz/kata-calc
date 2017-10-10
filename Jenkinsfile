@@ -11,7 +11,7 @@ pipeline {
         parallel(
           "Relay": {
             echo 'Download artifacts'
-            sleep 15
+            sleep 3
             
           },
           "Server": {
@@ -40,13 +40,13 @@ pipeline {
           },
           "Chrome": {
             echo 'chrome'
-            sleep 10
+            sleep 2
             
           },
           "Firefox": {
             echo 'Firefox'
-            sh '''sleep 30
-exit 2'''
+            sh '''sleep 5
+exit 0'''
             
           }
         )
