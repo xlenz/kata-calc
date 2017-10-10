@@ -38,14 +38,15 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo 'OLOLO'
-                sh "echo 'my artifact data' > build_artifact.txt"
+              build_number = currentBuild.number
+              echo 'OLOLO ${build_number}'
+              sh "echo 'my artifact data' > build_artifact.txt"
             }
         }
     }
     post { 
         always { 
-            echo 'BLDNMBBR: ${BUILD_NUIMBER}'
+            echo 'BLDNMBBR'
           
             step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
                   siteName: 'ua-mg',
