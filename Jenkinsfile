@@ -42,7 +42,7 @@ node('master') {
               sh "echo 'my artifact data' > build_artifact.txt"
 //            }
 //        }
-//    }
+    }
     post { 
         always { 
             echo 'BLDNMBBR'
@@ -60,5 +60,5 @@ node('master') {
             ])
         }
     }
-  }
+//  }
 //}
