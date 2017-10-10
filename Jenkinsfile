@@ -1,9 +1,15 @@
 pipeline {
   agent { node { label 'master' } }
   stages {
-    stage('Build') {
+    stage('BuildUser invoke') {
       steps {
         echo 'Hello, bitwiseman!'
+        
+        wrap([$class: 'BuildUser']) {
+          echo "${BUILD_USER}"
+          echo "${BUILD_USER_ID}"
+          echo "${BUILD_USER_EMAIL}"
+        }
       }
     }
     stage('Deploy') {
