@@ -1,5 +1,4 @@
 node('master') {
-  step([$class: 'ArtifactArchiver', artifacts: '**/*.*'])
-  step([$class: 'BuildUser', BUILD_USER: 'haha'])
-  echo "${BUILD_USER}"
+  echo "my artifact data">build_artifact.txt
+  step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
 }
