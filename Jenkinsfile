@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-              echo "__Workspace ${env.env.WORKSPACE}"
+              echo "__Workspace ${env.WORKSPACE}"
               println "__Build number ${env.BUILD_NUMBER}"
               sh 'env > env_variables.txt'      
               sleep 3
