@@ -41,10 +41,7 @@ pipeline {
             steps {
               echo "OLOLO ${env.BUILD_NUMBER} ${env.BUILD_NUMBER}"
               println "build ${env.BUILD_NUMBER}"
-              sh 'env > env.txt' 
-              for (String i : readFile('env.txt').split("\r?\n")) {
-                  println i
-              }
+              sh 'env > env.txt'      
               sleep 3
               sh "echo 'my artifact data' > build_artifact.txt"
               step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
