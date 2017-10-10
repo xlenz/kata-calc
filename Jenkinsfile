@@ -34,11 +34,12 @@ node('master') {
 }
 */  
 pipeline {
-  agent { label 'labelName' }
+  agent { label 'master' }
   
     stages {
         stage('Example') {
             steps {
+              sleep 3
               echo 'OLOLO ${env.BUILD_NUMBER}'
               sh "echo 'my artifact data' > build_artifact.txt"
               step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
