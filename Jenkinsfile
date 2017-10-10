@@ -14,8 +14,8 @@ pipeline {
     }
   
     post { 
-        always { 
-          steps {
+        steps { 
+          always {
             echo '== DA POST ACTION =='
           
             step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
