@@ -38,8 +38,8 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-              build_number = currentBuild.number
-              echo 'OLOLO ${build_number}'
+              def build_number = ""
+              echo 'OLOLO ${currentBuild}'
               sh "echo 'my artifact data' > build_artifact.txt"
             }
         }
