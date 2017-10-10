@@ -19,8 +19,8 @@ pipeline {
             echo '== DA POST ACTION =='
             
             step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
-
-            step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
+            
+            step([$class: 'SerenaDAPublisher',
                   siteName: 'ua-mg',
 
                   baseDir: env.WORKSPACE,
