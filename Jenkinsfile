@@ -1,8 +1,9 @@
+/*  
 node('master') {
   echo "LALALALA"
   // sh "echo 'my artifact data' > build_artifact.txt"
   // step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
-/*  
+
   step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
         siteName: 'ua-mg',
 
@@ -14,7 +15,7 @@ node('master') {
         deployEnv: 'TEST',
         deployProc: 'Deploy_application'
   ])
-*/  
+
   post { 
         always { 
               step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
@@ -28,6 +29,22 @@ node('master') {
                 deployEnv: 'TEST',
                 deployProc: 'Deploy_application'
           ])
+        }
+    }
+}
+*/  
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                echo 'OLOLO'
+            }
+        }
+    }
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
         }
     }
 }
