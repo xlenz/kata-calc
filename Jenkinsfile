@@ -33,16 +33,16 @@ node('master') {
     }
 }
 */  
-pipeline {
+//pipeline {
   node('master') {
-    stages {
-        stage('Example') {
-            steps {
+//    stages {
+//        stage('Example') {
+//            steps {
               echo 'OLOLO ${env.BUILD_NUMBER}'
               sh "echo 'my artifact data' > build_artifact.txt"
-            }
-        }
-    }
+//            }
+//        }
+//    }
     post { 
         always { 
             echo 'BLDNMBBR'
@@ -61,4 +61,4 @@ pipeline {
         }
     }
   }
-}
+//}
