@@ -39,8 +39,8 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-              sleep 3
               echo 'OLOLO ${env.BUILD_NUMBER}'
+              sleep 3
               sh "echo 'my artifact data' > build_artifact.txt"
               step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
             }
