@@ -33,16 +33,19 @@ node('master') {
     }
 }
 */  
-//pipeline {
-  node('master') {
-//    stages {
-//        stage('Example') {
-//            steps {
+pipeline {
+  agent { label 'labelName' }
+  
+    stages {
+        stage('Example') {
+            steps {
               echo 'OLOLO ${env.BUILD_NUMBER}'
               sh "echo 'my artifact data' > build_artifact.txt"
-//            }
-//        }
+              step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
+            }
+        }
     }
+  
     post { 
         always { 
             echo 'BLDNMBBR'
@@ -60,5 +63,4 @@ node('master') {
             ])
         }
     }
-//  }
-//}
+}
