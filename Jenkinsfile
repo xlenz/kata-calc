@@ -3,10 +3,14 @@ node('master') {
   step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
   
   step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
-    siteName: 'ua-mg',
-    deploy: true,
-    deployApp: 'PDT_Gestion_Profils',
-    deployEnv: 'TEST',
-    deployProc: 'Deploy_application'
+        siteName: 'ua-mg',
+
+        component: 'PDT_EAR',
+        versionName: '${BUILD_NUIMBER}',
+
+        deploy: true,
+        deployApp: 'PDT_Gestion_Profils',
+        deployEnv: 'TEST',
+        deployProc: 'Deploy_application'
   ])
 }
