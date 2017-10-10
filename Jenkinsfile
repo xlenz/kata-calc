@@ -34,11 +34,11 @@ node('master') {
 }
 */  
 pipeline {
-    agent any
+  node('master') {
     stages {
         stage('Example') {
             steps {
-              echo 'OLOLO ${currentBuild}'
+              echo 'OLOLO ${env.BUILD_NUMBER}'
               sh "echo 'my artifact data' > build_artifact.txt"
             }
         }
@@ -51,7 +51,7 @@ pipeline {
                   siteName: 'ua-mg',
 
                   component: 'PDT_EAR',
-                  versionName: '${BUILD_NUIMBER}',
+                  versionName: '${env.BUILD_NUIMBER}',
 
                   deploy: true,
                   deployApp: 'PDT_Gestion_Profils',
@@ -60,4 +60,5 @@ pipeline {
             ])
         }
     }
+  }
 }
