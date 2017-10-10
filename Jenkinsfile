@@ -4,8 +4,9 @@ node('master') {
   
   step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
     siteName: 'ua-mg',
-    runProcess: true,
-    processName: 'Deploy_application',
-    resourceName: 'auto-agent-direct'
+    deploy: true,
+    deployApp: 'PDT_Gestion_Profils',
+    deployEnv: 'TEST',
+    deployProc: 'Deploy_application'
   ])
 }
