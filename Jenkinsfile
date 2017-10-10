@@ -8,16 +8,17 @@ pipeline {
               println "__Build number ${env.BUILD_NUMBER}"
               sh 'env > env_variables.txt'      
               sleep 3
-              step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
+              // step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
             }
         }
     }
   
     post { 
-        steps { 
-          always {
+        always { 
             echo '== DA POST ACTION =='
-          
+            
+            step([$class: 'ArtifactArchiver', artifacts: '*.txt'])
+/*          
             step([$class: 'com.serena.da.jenkins.plugins.sdadeploy.SerenaDAPublisher',
                   siteName: 'ua-mg',
 
@@ -32,7 +33,7 @@ pipeline {
                   deployEnv: 'TEST',
                   deployProc: 'Deploy_application'
             ])
-          }
+*/
         }
     }
 }
